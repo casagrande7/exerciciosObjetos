@@ -4,4 +4,6 @@ class Produto {
         this.nome = nome;
         this.valor = valor;
     }
+    marketing() {
+    }
 }
