@@ -27,9 +27,25 @@ class contaBancaria{
 }
 
 let minhaConta = new contaBancaria("João", 1000.00);
-let contaMinha = new contaBancaria("Pedro", 1000.00);
+let contaMinha = new contaBancaria("Pedro", 5000.00);
+let contabMiha = new contaBancaria("Gabriel", 10000);
 
 console.log(minhaConta.banco());
 console.log(minhaConta.deposito(500));
 console.log(minhaConta.saque(200));
 console.log(minhaConta.saqueNovo(1500));
+
+
+
+console.log(contaMinha.banco());
+console.log(contaMinha.deposito(2600));
+console.log(contaMinha.saque(500));
+console.log(contaMinha.saqueNovo(3000));
+
+
+
+console.log(contabMiha.banco());
+console.log(contabMiha.deposito(10000));
+console.log(contabMiha.saque(7000));
+console.log(contabMiha.saqueNovo(8000));
+
