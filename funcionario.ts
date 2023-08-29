@@ -18,14 +18,18 @@ class Funcionario{
         return "Funcionária: " + this.nome + " exerço o cargo: " + this.cargo + " ,aumento de 10% aplicado. Novo salário: "+ this.salario_bruto + " reais";
     }
     taxas(){
+        this.salario_bruto = (this.salario_bruto*100)/100
         this.inss = (this.salario_bruto*this.inss)/100 
         this.ir = (this.salario_bruto*this.ir)/100;
         let impostos = this.inss + this.ir
-        this.salario_bruto = this.salario_bruto - this.inss;
-        this.salario_bruto = this.salario_bruto - this.ir;
+        let salarioliquido = this.salario_bruto - this.inss
+        let salarioliquido2 = salarioliquido - this.ir
+        
+        
 
-        return "Funcionária: " + this.nome + " Salário Bruto: "+ this.salario_bruto + " Impostos a serem pagos: " +  impostos + " Salário líquido: " + this.salario_bruto;
+        return "Funcionária: " + this.nome + " Salário Bruto: "+ this.salario_bruto + " Impostos a serem pagos: " +  impostos + " Salário líquido: " + salarioliquido2 ;
     }
+    
 }
 
 
