@@ -51,6 +51,19 @@ class Musica{
             return "A Playlist está vazia";
         }
     }
-
-    
  }
+
+ const musica1 = new Musica("Vai namorar comigo", "Henrique e Juliano", 300);
+ const musica2 = new Musica("Enchate", "Taylor Swift", 200);
+ const musica3 = new Musica("ETA", "New Jeans", 500);
+
+ const minhaPlaylist = new Playlist();
+ minhaPlaylist.adicionarMusica(musica1);
+ minhaPlaylist.adicionarMusica(musica2);
+ minhaPlaylist.adicionarMusica(musica3);
+ console.log(minhaPlaylist.reproduzir());
+ console.log(minhaPlaylist.pausar());
+ console.log(minhaPlaylist.proxima());
+ console.log(minhaPlaylist.proxima());
+ console.log(minhaPlaylist.proxima());
+
