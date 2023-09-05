@@ -55,3 +55,4 @@ console.log(minhaPlaylist.pausar());
 console.log(minhaPlaylist.proxima());
 console.log(minhaPlaylist.proxima());
 console.log(minhaPlaylist.proxima());
+musica1.duracao = 30;
