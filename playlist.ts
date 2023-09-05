@@ -24,7 +24,7 @@ class Musica{
     reproduzir(){
         if(this.musicas.length > 0){
             this.reproduzindo = true; 
-            return "Reproduzindo" + this.musicas[this.indiceAtual].titulo + ' - ' + this.musicas[this.indiceAtual].artista;
+            return "Reproduzindo " + this.musicas[this.indiceAtual].titulo + ' - ' + this.musicas[this.indiceAtual].artista;
 
         }
         else{
