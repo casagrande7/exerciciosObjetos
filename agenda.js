@@ -20,7 +20,7 @@ class Agenda {
         }
     }
     removerEvento(evento) {
-        this.eventos = this.eventos.filter((item) => item.nome !== evento.nome);
+        this.eventos = this.eventos.filter(item => item.nome !== evento.nome);
     }
 }
 const evento1 = new Evento("Halloween", "17/10/2023", "22:30");
