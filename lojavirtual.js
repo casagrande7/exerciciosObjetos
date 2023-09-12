@@ -32,34 +32,54 @@ class Loja {
     }
     adicionarEstoque(estoque) {
         this.estoque.push(estoque);
+        return "Estoque adicionado";
     }
     removerProdutoEstoque(produto) {
         this.estoque = this.estoque.filter(item => item.nome !== produto.nome);
+        return "Produto removido do estoque";
     }
-    adicionarCarrinhoDeCompras() {
-        let produtoencontrado = this.estoque.find(estoque => estoque.nome == produto1.nome);
+    adicionarCarrinhoDeCompras(produto) {
+        let produtoencontrado = this.estoque.find(estoque => estoque.nome == produto.nome);
         if (produtoencontrado) {
+            this.carrinhoDeCompras.adicionarProdutos(produto);
+            return "Produto adicionado ao carrinho de compras";
         }
         else {
             return "Produto não adicionado";
         }
+    }
+    exibirProdutosCarrinho() {
+        if (this.estoque.length > 0) {
+            for (let i = 0; i < this.estoque.length; i++) {
+                console.log("Produto: " + this.estoque[i].nome + " Preço: " + this.estoque[i].preco.toFixed(2));
+            }
+        }
+    }
+    exibirTotalCarrinho() {
+        return this.carrinhoDeCompras.calcularTotalDeCompras();
+    }
+    removerCarrinho(produto) {
+        this.estoque = this.estoque.filter(item => item.nome !== produto.nome);
+        return "Produto removido do carrinho";
     }
 }
 const produto1 = new ProdutoLoja("Tênis Nike Air Force", 500.00);
 const produto2 = new ProdutoLoja("Iphone 14 Pro Max", 4500.00);
 const produto3 = new ProdutoLoja("Apple Watch", 2350.00);
 const produto4 = new ProdutoLoja("Mac Book", 5000.00);
-const carrinho = new CarrinhoDeCompras();
-carrinho.adicionarProdutos(produto1);
-carrinho.adicionarProdutos(produto2);
-carrinho.adicionarProdutos(produto3);
-carrinho.adicionarProdutos(produto4);
-carrinho.removerProduto(produto1);
-console.log(carrinho.calcularTotalDeCompras());
-const estoque = new Loja();
-estoque.adicionarEstoque(produto1);
-estoque.adicionarEstoque(produto2);
-estoque.adicionarEstoque(produto3);
-estoque.adicionarEstoque(produto4);
-estoque.adicionarEstoque(produto2);
-estoque.adicionarCarrinhoDeCompras();
+const produto5 = new ProdutoLoja("Malbec Elegant", 200.00);
+const loja = new Loja();
+console.log(loja.adicionarEstoque(produto1));
+console.log(loja.adicionarEstoque(produto2));
+console.log(loja.adicionarEstoque(produto3));
+console.log(loja.adicionarEstoque(produto4));
+console.log(loja.adicionarCarrinhoDeCompras(produto1));
+console.log(loja.adicionarCarrinhoDeCompras(produto2));
+console.log(loja.adicionarCarrinhoDeCompras(produto3));
+console.log(loja.adicionarCarrinhoDeCompras(produto4));
+console.log(loja.adicionarCarrinhoDeCompras(produto5));
+console.log(loja.exibirProdutosCarrinho());
+console.log(loja.exibirTotalCarrinho());
+console.log(loja.removerCarrinho(produto1));
+console.log(loja.exibirProdutosCarrinho());
+console.log(loja.exibirTotalCarrinho());
