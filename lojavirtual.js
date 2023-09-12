@@ -59,8 +59,7 @@ class Loja {
         return this.carrinhoDeCompras.calcularTotalDeCompras();
     }
     removerCarrinho(produto) {
-        this.estoque = this.estoque.filter(item => item.nome !== produto.nome);
-        return "Produto removido do carrinho";
+        return this.carrinhoDeCompras.removerProduto(produto);
     }
 }
 const produto1 = new ProdutoLoja("Tênis Nike Air Force", 500.00);
@@ -81,5 +80,6 @@ console.log(loja.adicionarCarrinhoDeCompras(produto5));
 console.log(loja.exibirProdutosCarrinho());
 console.log(loja.exibirTotalCarrinho());
 console.log(loja.removerCarrinho(produto1));
+console.log(loja.removerProdutoEstoque(produto1));
 console.log(loja.exibirProdutosCarrinho());
 console.log(loja.exibirTotalCarrinho());

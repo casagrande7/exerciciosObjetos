@@ -67,8 +67,7 @@ exibirTotalCarrinho(){
    return this.carrinhoDeCompras.calcularTotalDeCompras();
 }
 removerCarrinho(produto: ProdutoLoja){
-    this.estoque = this.estoque.filter(item => item.nome !== produto.nome);
-        return "Produto removido do carrinho";
+        return this.carrinhoDeCompras.removerProduto(produto);
 }
 
 }
@@ -92,6 +91,7 @@ console.log(loja.adicionarCarrinhoDeCompras(produto5));
 console.log(loja.exibirProdutosCarrinho());
 console.log(loja.exibirTotalCarrinho());
 console.log(loja.removerCarrinho(produto1));
+console.log(loja.removerProdutoEstoque(produto1));
 console.log(loja.exibirProdutosCarrinho());
 console.log(loja.exibirTotalCarrinho());
 
