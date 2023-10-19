@@ -1,75 +1,83 @@
-class ProdutoLoja{
+class ProdutoLoja {
     nome: string;
     preco: number;
 
-    constructor(nome: string, preco: number){
+    constructor(nome: string, preco: number) {
         this.nome = nome;
         this.preco = preco;
     }
 }
 
-class CarrinhoDeCompras{
-    produtos : ProdutoLoja [] = [];
+class CarrinhoDeComprar {
+    produtosDoCarrinho: ProdutoLoja[] = [];
 
-    constructor(){
+    constructor() {
     }
 
-    adicionarProdutos(produtos: ProdutoLoja){
-        this.produtos.push(produtos);
+    adicionarProdutos(produtos: ProdutoLoja) {
+        this.produtosDoCarrinho.push(produtos);
     }
 
-    calcularTotalDeCompras(){
-        console.log("Preço Dos Produtos:")
-       let soma = 0;
-       this.produtos.forEach(produto =>{
-        soma = soma + produto.preco
-       })
-       return soma.toFixed(2);
-    }
-    removerProduto(produto: ProdutoLoja){
-        this.produtos = this.produtos.filter(item => item.nome !== produto.nome);
+    removerProdutoDoCarrinho(produto: ProdutoLoja) {
+        this.produtosDoCarrinho = this.produtosDoCarrinho.filter(item => item.nome !== produto.nome);
         return "Produto Removido"
-}
-}
-
-class Loja{
-    estoque: ProdutoLoja [] = [];
-    carrinhoDeCompras = new CarrinhoDeCompras();
-
-    constructor(){
     }
 
-    adicionarEstoque(estoque: ProdutoLoja){
-        this.estoque.push(estoque);
-        return "Estoque adicionado"
+    calcularValorTotalDeCompras() {
+        console.log("Preço Dos Produtos: ")
+        let soma = 0;
+        this.produtosDoCarrinho.forEach(produto => {
+            soma = soma + produto.preco 
+        });
+        return soma.toFixed(2);
     }
-    removerProdutoEstoque(produto: ProdutoLoja){
-        this.estoque = this.estoque.filter(item => item.nome !== produto.nome);
-        return "Produto removido do estoque";
-}
-   adicionarCarrinhoDeCompras(produto: ProdutoLoja){
-    let produtoencontrado = this.estoque.find(estoque => estoque.nome == produto.nome);
-    if(produtoencontrado){
-        this.carrinhoDeCompras.adicionarProdutos(produto);
-        return "Produto adicionado ao carrinho de compras";
-    } else{
-        return "Produto não adicionado"
+
+    exibirProdutos() {
+        console.log("Produtos da Loja")
+        if (this.produtosDoCarrinho.length > 0)
+            for (let i = 0; i < this.produtosDoCarrinho.length; i++)
+                console.log("Produtos: " + this.produtosDoCarrinho[i].nome + " Preços: " + this.produtosDoCarrinho[i].preco.toFixed(2))
     }
 }
-exibirProdutosCarrinho(){
-    if(this.estoque.length > 0){
-        for(let i=0; i< this.estoque.length; i++){
-            console.log("Produto: " + this.estoque[i].nome + " Preço: " + this.estoque[i].preco.toFixed(2));
+
+class Loja {
+    estoque: ProdutoLoja[] = [];
+    carrinhoDeCompras = new CarrinhoDeComprar();
+
+    constructor() {
+    }
+
+    adicionarProdutoNoEstoque(produtos: ProdutoLoja) {
+        this.estoque.push(produtos)
+        return "Produto Adicionado ao Estoque"
+    }
+
+    removerProdutoDoEstoque(produtos: ProdutoLoja) {
+        this.estoque = this.estoque.filter(item => item.nome !== produtos.nome)
+        return "Produto Removido do Estoque"
+    }
+
+    adicionarProdutosNoCarrinhoDeCompras(produtos: ProdutoLoja) {
+        let produtoEncontado = this.estoque.find(item => item.nome === produtos.nome)
+        if (produtoEncontado) {
+            this.carrinhoDeCompras.adicionarProdutos(produtos);
+            return "Produto Adicionado ao Carrinho de Compras"
+        } else {
+            return "Produto não adicionado ao Carrinho de Compras"
         }
     }
-}
-exibirTotalCarrinho(){
-   return this.carrinhoDeCompras.calcularTotalDeCompras();
-}
-removerCarrinho(produto: ProdutoLoja){
-        return this.carrinhoDeCompras.removerProduto(produto);
-}
 
+    exibirProdutosDoCarrinho(){
+        return this.carrinhoDeCompras.exibirProdutos();
+    }
+
+    exibirTotalCarrinho(){
+        return this.carrinhoDeCompras.calcularValorTotalDeCompras();
+    }
+
+    removerProdutoDoCarrinho(produtos: ProdutoLoja){
+        return this.carrinhoDeCompras.removerProdutoDoCarrinho(produtos);
+    }
 }
 
 const produto1 = new ProdutoLoja("Tênis Nike Air Force", 500.00);
@@ -79,20 +87,18 @@ const produto4 = new ProdutoLoja("Mac Book", 5000.00);
 const produto5 = new ProdutoLoja("Malbec Elegant", 200.00);
 
 const loja = new Loja();
-console.log(loja.adicionarEstoque(produto1));
-console.log(loja.adicionarEstoque(produto2));
-console.log(loja.adicionarEstoque(produto3));
-console.log(loja.adicionarEstoque(produto4));
-console.log(loja.adicionarCarrinhoDeCompras(produto1));
-console.log(loja.adicionarCarrinhoDeCompras(produto2));
-console.log(loja.adicionarCarrinhoDeCompras(produto3));
-console.log(loja.adicionarCarrinhoDeCompras(produto4));
-console.log(loja.adicionarCarrinhoDeCompras(produto5));
-console.log(loja.exibirProdutosCarrinho());
+console.log(loja.adicionarProdutoNoEstoque(produto1));
+console.log(loja.adicionarProdutoNoEstoque(produto2));
+console.log(loja.adicionarProdutoNoEstoque(produto3));
+console.log(loja.adicionarProdutoNoEstoque(produto4));
+console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto1));
+console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto2));
+console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto3));
+console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto4));
+console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto5));
+console.log(loja.exibirProdutosDoCarrinho());
 console.log(loja.exibirTotalCarrinho());
-console.log(loja.removerCarrinho(produto1));
-console.log(loja.removerProdutoEstoque(produto1));
-console.log(loja.exibirProdutosCarrinho());
+console.log(loja.removerProdutoDoCarrinho(produto1));
+console.log(loja.removerProdutoDoEstoque(produto1));
 console.log(loja.exibirTotalCarrinho());
-
-
+console.log(loja.exibirTotalCarrinho());
