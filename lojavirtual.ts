@@ -20,11 +20,11 @@ class CarrinhoDeComprar {
 
     removerProdutoDoCarrinho(produto: ProdutoLoja) {
         this.produtosDoCarrinho = this.produtosDoCarrinho.filter(item => item.nome !== produto.nome);
-        return "Produto Removido"
+        return "Produto Removido do Carrinho"
     }
 
     calcularValorTotalDeCompras() {
-        console.log("Preço Dos Produtos: ")
+        console.log("Preço Total Dos Produtos: ")
         let soma = 0;
         this.produtosDoCarrinho.forEach(produto => {
             soma = soma + produto.preco 
@@ -100,5 +100,4 @@ loja.exibirProdutosDoCarrinho();
 console.log(loja.exibirTotalCarrinho());
 console.log(loja.removerProdutoDoCarrinho(produto1));
 console.log(loja.removerProdutoDoEstoque(produto1));
-console.log(loja.exibirTotalCarrinho());
 console.log(loja.exibirTotalCarrinho());
