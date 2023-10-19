@@ -79,7 +79,7 @@ console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto2));
 console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto3));
 console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto4));
 console.log(loja.adicionarProdutosNoCarrinhoDeCompras(produto5));
-console.log(loja.exibirProdutosDoCarrinho());
+loja.exibirProdutosDoCarrinho();
 console.log(loja.exibirTotalCarrinho());
 console.log(loja.removerProdutoDoCarrinho(produto1));
 console.log(loja.removerProdutoDoEstoque(produto1));
